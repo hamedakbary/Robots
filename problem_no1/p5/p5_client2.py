@@ -15,8 +15,13 @@ def callback(msg):
     request_data = rospy.ServiceProxy("/data_exchange", servicedata)
     rospy.sleep(id)
     response = request_data(id, type, availibility , round(xr,2), round(yr,2))
-    rospy.loginfo("Response data: ")
-    rospy.loginfo(response)
+    rospy.loginfo("Response Received")
+    if response.id == id:
+        rospy.loginfo("Response data: ")
+        rospy.loginfo(response)
+    else:
+        rospy.loginfo("This client is free")
+
 
 
 if __name__ == '__main__':
